@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
-
-export default nextConfig;
+const nextConfig = {
+    experimental: {
+      nodeMiddleware: true, // ✅ Enable Node.js runtime for middleware
+    },
+    
+  };
+  
+  export default nextConfig; // ✅ ES Module me export ka sahi tareeqa
+  
