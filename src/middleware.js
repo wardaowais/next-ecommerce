@@ -16,8 +16,12 @@ export function middleware(req) {
     }
 
     try {
-        jwt.verify(token, process.env.JWT_SECRET);
-        console.log("✅ Token Verified Successfully");
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        console.log(" Token Verified Successfully");
+
+        // Attach decoded user info to the request object
+        req.user = decoded;
+       
     } catch (error) {
         console.log(" Invalid Token:", error.message);
         return NextResponse.redirect(new URL("/login", req.url));
