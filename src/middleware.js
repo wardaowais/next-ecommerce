@@ -18,9 +18,9 @@ export function middleware(req) {
 
     try {
         jwt.verify(token, process.env.JWT_SECRET); 
-        console.log("✅ Token Verified Successfully");
+        console.log(" Token Verified Successfully");
     } catch (error) {
-        console.log("❌ Invalid Token:", error.message);
+        console.log(" Invalid Token:", error.message);
         return NextResponse.redirect(new URL("/login", req.url));
     }
 
@@ -29,5 +29,5 @@ export function middleware(req) {
 
 export const config = {
     matcher: ["/profile", "/profile/:path*", "/api/profile", "/api/profile/:path*"], 
-    runtime: "nodejs",  // ✅ This will fix the issue 
+    runtime: "nodejs",  //  This will fix the issue 
 };
