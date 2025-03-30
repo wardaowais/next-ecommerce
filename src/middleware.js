@@ -21,13 +21,19 @@ export function middleware(req) {
         console.log("✅ Token Verified Successfully");
     } catch (error) {
         console.log("❌ Invalid Token:", error.message);
+        console.log("🔄 Redirecting to /login...");
         return NextResponse.redirect(new URL("/login", req.url));
+        
     }
 
-    return NextResponse.next();
+
+    console.log("Middleware Passed! Forwarding Request...");
+    const response = NextResponse.next();
+
+    return response;
 }
 
 export const config = {
-    matcher: ["/profile", "/profile/:path*", "/api/profile", "/api/profile/:path*"], 
+    matcher: ["/profile", "/profile/:path*", "/api/profile", "/api/profile/:path*","/yusra"], 
     runtime: "nodejs",  // ✅ This will fix the issue 
 };
